@@ -1,0 +1,56 @@
+﻿<div id="test">
+    @(Html.Kendo().Grid<TestVM>
+                    ()
+                    .Name("grid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(c => c.Name).ClientTemplate("<i class='fa fa-address-card-o name'></i>#=Name#").Filterable(f => f.Multi(true).Search(true)).Width(140);
+                        columns.Bound(c => c.Number)
+                            .Filterable(f => f
+                                .Multi(true)
+                                .Search(true)
+                                .ItemTemplate("ItemTemplate('Number', 'NumberTemplate')")
+                                .DataSource(ds => ds.Read(r => r
+                                    .Action("Test_Read_Filter", "KendoGrid")
+                                    .Data("{ field: 'Number' }"))))
+                            .ClientTemplate("#= NumberTemplate #")
+                            .Width(300);
+                        columns.Bound(c => c.Id)
+                        .Title(" ")
+                        .Filterable(false)
+                        .ClientTemplate("<a class='k-button loader-button'><i class='fa fa-lg fa-pencil'></i></a>")
+                        .Width(65);
+                    })
+                    .Pageable(p => p.PageSizes(new int[] { 10, 20, 50 }))
+                    .Sortable(sortable =>
+                    {
+                        sortable.SortMode(GridSortMode.SingleColumn);
+                    })
+                    .Filterable(f => f.Extra(false))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .ServerOperation(true)
+                        .PageSize(10)
+                        .Model(model =>
+                        {
+                            model.Id(p => p.Id);
+                        })
+                        .Read(read => read.Action("Test_Read", "KendoGrid"))
+                    )
+                    .Deferred())
+
+
+</div>
+<br />
+<div id="actions-container">
+    <div class="validation alert alert-danger hide"></div>
+</div>
+
+@Html.Kendo().DeferredScripts()
+<script>
+    function ItemTemplate(valueField, nameField) {
+        return function (e) {
+            return `<li class="k-item"> <label class="k-label"> <input type="checkbox" name="${valueField}" value="#= ${valueField} #"/>#= ${nameField} || data.all #</label></li>`
+        };
+    }
+</script>

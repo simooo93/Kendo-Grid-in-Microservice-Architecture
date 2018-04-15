@@ -1,0 +1,66 @@
+﻿@using System.Reflection
+<!DOCTYPE html>
+<html>
+@{
+    ViewData["Version"] = Assembly.GetEntryAssembly().GetName().Version.ToString();
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/lib/kendo/styles/kendo.common.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="~/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/kendo.min.css" asp-append-version="true" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+
+    <script src="~/lib/kendo/js/kendo.all.min.js">
+    </script>
+
+    <script src="~/lib/kendo/js/kendo.aspnetmvc.min.js">
+    </script>
+
+    <script src="~/lib/kendo/js/kendo.angular.min.js">
+    </script>
+
+    <script src="~/lib/kendo/js/cultures/kendo.culture.en-GB.min.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <div style="padding: 50px">
+        @RenderBody()
+
+    </div>
+
+
+    <script>
+        kendo.culture("en-GB");
+        $(function () {
+            var header = $('#header .navbar').height();
+            var maxHeaderHeight = 90;
+            if (header < maxHeaderHeight) {
+                $('#content').css('padding-top', header + 20 + 'px');
+            }
+
+            kendo.ui.editor.ColorTool.prototype.options.palette = null;
+
+            //By default Kendo adds <p> tags instead of <br/>
+            var defaultTools = kendo.ui.Editor.defaultTools;
+            defaultTools["insertLineBreak"].options.shift = false;
+            delete defaultTools["insertParagraph"].options;
+        });
+
+        var entityStatusActive = 1;
+        var entityStatusInactive = 2;
+        var entityStatusPendingApproval = 3;
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
