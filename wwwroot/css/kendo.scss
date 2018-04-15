@@ -1,0 +1,614 @@
+﻿@import 'colors.scss';
+
+.k-textbox {
+    border-radius: 5px;
+    width: 100%;
+
+    &:focus {
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px $main-color;
+    }
+}
+
+.k-checkbox:focus:checked + .k-checkbox-label::before, .k-radio:focus:checked + .k-radio-label::before {
+    box-shadow: none;
+}
+
+.k-textbox[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+
+    &:hover {
+        cursor: not-allowed;
+        background-color: #eee;
+        opacity: 1;
+    }
+}
+
+
+.k-radio + .k-radio-label::before {
+    background: white;
+    border-color: $main-color;
+}
+
+.k-radio:checked + .k-radio-label::before {
+    background: white;
+    border-color: $main-color;
+    box-shadow: none;
+}
+
+.k-radio:checked + .k-radio-label:after {
+    background: $main-color;
+    border-radius: 50%;
+}
+
+textarea.k-textbox {
+    width: 100%;
+    resize: vertical;
+    min-height: 69px;  
+
+    &.k-readonly {
+        background: #eeeeee;
+    }
+}
+
+.k-treelist {
+    .k-grid-toolbar {
+        [data-command="create"] {
+            float: right;
+        }
+    }
+}
+
+.k-grid {
+    overflow-x: auto;
+    padding-bottom: 15px;
+    border: none;
+    box-shadow: none;
+
+    .k-header {
+        text-transform: capitalize !important;
+        font-family: Roboto-Bold !important;
+
+        .k-button {
+            display: inline-block;
+        }
+    }
+
+    .k-grid-header {
+        border-color: $background-dark;
+
+        th.k-header .k-link {
+            text-transform: capitalize !important;
+            font-family: Roboto-Bold !important;
+        }
+
+        .k-grid-filter {
+            margin-top: -7px;
+        }
+
+        .k-state-active {
+            margin-right: 5px !important;
+        }
+
+        .k-grid-header-wrap {
+            border-right: 0;
+        }
+    }
+
+    .k-grid-toolbar {
+        background: white;
+        border: none;
+        padding: 25px 0 20px 0;
+
+        a {
+            float: right;
+        }
+    }
+
+    .grid-manage-label {
+        font-family: Roboto-Bold !important;
+        font-size: 20px;
+        position: relative;
+        top: -10px;
+        margin-right: 15px;
+        text-transform: capitalize;
+    }
+
+    .grid-search {
+        width: 250px;
+        display: inline-table;
+        height: 36px;
+        float: right;
+        margin-right: 20px;
+
+
+        .input-group-addon {
+            background: #f2f2f2;
+        }
+
+        .form-control {
+            height: 36px;
+        }
+    }
+
+    .k-grid-delete-selection, .k-grid-delete-selection-second {
+        background: $main-color;
+        color: white;
+        padding: 5px 15px;
+        border-color: $main-color;
+    }
+
+    .k-grid-add-blue {
+        background: $main-color;
+        color: white;
+        padding: 7.5px 15px;
+        border-radius: 4px;
+        border-color: $main-color;
+
+        &:hover {
+            border-color: $main-color;
+        }
+
+        &:active {
+            background: $main-color;
+            box-shadow: none;
+        }
+
+        &:focus {
+            box-shadow: none !important;
+        }
+
+        .k-add {
+            display: none;
+        }
+    }
+
+    .k-grid-add, .inline-custom-add {
+        background: $orange !important;
+        color: white !important;
+        padding: 7.5px 15px;
+        border-radius: 4px;
+        border-color: $orange !important;
+        margin-left: 5px;
+
+        &:hover {
+            border-color: $orange !important;
+        }
+
+        &:active {
+            background: $orange !important;
+            box-shadow: none;
+        }
+
+        &:focus {
+            box-shadow: none !important;
+        }
+
+        .k-add {
+            display: none;
+        }
+    }
+
+    .k-file {
+        text-align: left;
+
+        .k-icon {
+            float: left;
+            top: 12px;
+        }
+
+        .k-upload-action .k-icon {
+            top: 2px;
+        }
+    }
+
+    .k-filename {
+        max-width: 200px;
+        min-width: 0;
+    }
+
+    thead {
+
+        tr {
+            th.k-header {
+                border-radius: 0;
+                background: white;
+                border-width: 0 0 1px 0;
+                padding: 12px 0.6em;
+
+                &:hover, &:last-child, &:first-child {
+                    border-radius: 0 !important;
+                }
+
+                .k-grid-filter {
+                    float: left;
+                }
+
+                .k-link {
+                    margin-left: 18px;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    tbody {
+        .name:before {
+            margin-right: 5px;
+        }
+
+        tr {
+            height: 46px;
+        }
+
+        tr.active {
+            td .k-button {
+                display: inline-block !important;
+            }
+        }
+
+        tr:nth-child(odd) {
+            background: $background;
+        }
+
+        tr:nth-child(even) {
+            background: white;
+        }
+
+        tr:hover {
+            color: black;
+            background: $main-lightest;
+
+            td .k-button, td .btn {
+                display: inline-block !important;
+            }
+        }
+
+        .k-state-selected, .k-state-selected:hover td {
+            color: white !important;
+            background: $main-color !important;
+        }
+
+        td {
+            border: none;
+
+            .btn:not(.show) {
+                display: none;
+            }
+
+            .k-button {
+                min-width: 34px;
+                color: $main-color;
+                background: transparent;
+                border: none;
+                display: none;
+
+                &:hover {
+                    background: $main-lightest;
+                    color: $orange;
+                    border: none;
+                }
+
+                &.btn-manage {
+                    color: $main-color;
+                    border: none;
+                    font-family: Roboto-Bold !important;
+                    text-decoration: underline;
+                    line-height: normal;
+
+                    &:focus, &:active {
+                        line-height: normal;
+                        box-shadow: none !important;
+                    }
+
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+
+                .k-delete, .k-edit, .k-update, .k-cancel, .k-icon {
+                    display: none;
+                }
+            }
+
+            .grid-modal-btn {
+                border: 1px solid $main-color;
+                color: $main-color;
+                padding: 6px;
+                font-family: Roboto-Bold !important;
+
+                &:hover {
+                    border: 1px solid $main-color;
+                    background: $main-color;
+                    color: white;
+                    text-decoration: none !important;
+                }
+            }
+        }
+    }
+
+    .k-link {
+        border-radius: 0;
+    }
+
+    .k-state-selected {
+        border-radius: 0;
+        background: $main-color;
+        border: 1px solid $main-color;
+    }
+
+    .k-grid-pager {
+        background: white;
+        border-width: 1px 0 0 0;
+        box-shadow: none;
+        padding-top: 25px !important;
+        border-color: $background-dark;
+        padding-left: 0px !important;
+
+        .k-pager-sizes .k-dropdown-wrap {
+            border-radius: 0;
+            border-color: $menu-text;
+        }
+
+        .k-link {
+            margin: 0 2px;
+            border: 1px solid $menu-text;
+            color: $menu-text;
+
+            &:hover {
+                color: black;
+            }
+        }
+
+        .k-pager-nav.k-pager-last {
+            border-radius: 0;
+        }
+
+        .k-pager-info {
+            font-size: 12px !important;
+        }
+
+        .k-pager-sizes {
+            font-size: 12px !important;
+        }
+    }
+
+    .k-nested-grid {
+        background: white !important;
+
+        .k-grid-add {
+            display: block;
+        }
+
+        .k-grid-toolbar {
+            padding: 0;
+            top: 0;
+            right: 0;
+            position: absolute;
+        }
+    }
+
+    .k-detail-row:hover {
+        background: white;
+    }
+}
+
+.k-popup {
+    .k-list li.k-item {
+        font-family: Roboto-Bold;
+    }
+
+    &.k-list-container {
+        padding: 0;
+
+        .k-list-scroller .k-list .k-item {
+            border-radius: 0;
+        }
+    }
+
+    &.k-filter-menu {
+        .k-multicheck-wrap {
+            .k-item {
+                line-height: 1.43em;
+            }
+
+            .k-label {
+                font-weight: normal;
+
+                input[type="checkbox"] {
+                    margin: 4px 4px 0 0;
+                }
+            }
+        }
+
+        .k-textbox {
+            border-radius: 0;
+
+            .k-i-search {
+                display: none;
+            }
+        }
+
+        .k-textbox:hover {
+            background-color: transparent;
+        }
+
+        .k-textbox.k-space-right {
+            padding: 0;
+        }
+
+        .k-window {
+            .k-header {
+                text-align: center;
+                padding: 15px 0;
+            }
+
+            .k-dropdown.k-header {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.grid-popup-edit {
+    .k-window-titlebar {
+        /*display: none;*/
+    }
+
+    .k-header .k-window-title {
+        text-align: left;
+    }
+
+    .k-popup-edit-form {
+        .k-edit-form-container {
+            width: 100%;
+
+            .k-edit-buttons {
+                text-align: left;
+                padding: 20px;
+
+                .btn {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}
+
+.k-tabstrip {
+    /* reset everything to the default box model */
+    *, :before, :after, ::after, ::before {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+    /* set a border-box model only to elements that need it */
+    /* if this class is applied to a Kendo UI widget, its layout may change */
+    .form-control,
+    .container,
+    .container-fluid,
+    .row,
+    .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+    .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+    .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+    .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+    .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+    .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+    .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+    .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+    .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+    .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+    .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+    .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .k-content {
+        padding: 15px;
+        border: 0;
+    }
+
+    &.k-header {
+        border: 0;
+    }
+
+    .k-tabstrip-items {
+        .k-state-default {
+            border: 0;
+
+            &.k-state-hover {
+                color: white;
+                background: $main-color;
+            }
+
+            &.k-state-active {
+                border-bottom: 4px solid $main-color;
+                margin-right: 5px !important;
+            }
+
+            span {
+                border: 0;
+            }
+        }
+    }
+
+    .k-content.k-state-active {
+        border: 0;
+        min-height: 220px;
+    }
+}
+
+.k-dropdown {
+    &.k-header {
+        text-align: left;
+    }
+
+    .k-input {
+        font-weight: normal;
+        padding-left: 0.3em;
+    }
+}
+
+.k-multiselect {
+    .k-multiselect-wrap {
+        li {
+            padding: 0.01em 1.6em 0.01em 0.4em;
+        }
+
+        .k-select {
+            padding: 0.01em 0.2em;
+        }
+    }
+
+    .k-button {
+        background: $main-color;
+        border-color: $main-color;
+        margin: 3px;
+
+        &.k-state-hover {
+            background: $main-color;
+            border-color: $main-color;
+        }
+    }
+}
+
+.assignments-treelist.k-grid {
+    .k-grid-content {
+        height: 500px;
+    }
+
+    tbody tr {
+        background: white;
+    }
+}
+
+.k-flatcolorpicker {
+    background: white !important;
+}
+
+.k-window > div.k-popup-edit-form {
+    overflow:hidden !important;
+}
+
+.k-grid tbody tr:hover td a.k-button.hidden {
+    display: none !important;
+}
+
+.indented {
+    text-indent: 15px !important;
+}
+
+.indented-lg {
+    text-indent: 50px !important;
+}
+
+.table-k-link {
+    min-width: 20px !important;
+}
+
+.k-editor .k-editable-area{
+    border-color:$bootstrap-gray;
+}
